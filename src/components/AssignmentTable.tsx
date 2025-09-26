@@ -16,7 +16,6 @@ const AssignmentTable = ({ assignments, role = "student" }) => {
   const [openEdit, setOpenEdit] = useState(false);
   const [newStatus, setNewStatus] = useState("");
 
-  // ---------- Student: Submit Answer ----------
   const handleOpenSubmit = (assignment) => {
     setActiveAssignment(assignment);
     setAnswer(assignment.answer || "");
@@ -82,7 +81,7 @@ const AssignmentTable = ({ assignments, role = "student" }) => {
               <TableCell>Description</TableCell>
               <TableCell>Due Date</TableCell>
               <TableCell>Status</TableCell>
-              {role === "teacher" && <TableCell>Last Submission</TableCell>}
+              <TableCell>Last Submission</TableCell>
               <TableCell>Action</TableCell>
             </TableRow>
           </TableHead>
@@ -93,19 +92,17 @@ const AssignmentTable = ({ assignments, role = "student" }) => {
                 <TableCell>{a.description}</TableCell>
                 <TableCell>{a.dueDate?.split("T")[0]}</TableCell>
                 <TableCell>{a.status}</TableCell>
-                {role === "teacher" && (
-                  <TableCell>
+                <TableCell>
                     {a.answer
-                      ? `${a.answer}: ${a.answer}`
+                      ? `${a.answer}`
                       : "No submissions"}
-                  </TableCell>
-                )}
-
+                </TableCell>
                 <TableCell>
                   {role === "student" && a.status === "Published" && (
                     <Button
                       variant="contained"
                       size="small"
+                      disabled={a.answer ? true : false}
                       onClick={() => handleOpenSubmit(a)}
                     >
                       Submit

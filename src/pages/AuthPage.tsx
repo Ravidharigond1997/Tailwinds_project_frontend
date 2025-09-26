@@ -38,7 +38,6 @@ const AuthPage = () => {
   const handleLoginChange = e => setLoginForm({ ...loginForm, [e.target.name]: e.target.value });
   const handleRegisterChange = e => setRegisterForm({ ...registerForm, [e.target.name]: e.target.value });
 
-  // LOGIN
   const handleLogin = async (e) => {
     e.preventDefault();
     setError(""); 
@@ -52,7 +51,6 @@ const AuthPage = () => {
     }
   };
 
-  // REGISTER
   const handleRegister = async (e) => {
     e.preventDefault();
     setError(""); setSuccess("");
@@ -88,7 +86,6 @@ const AuthPage = () => {
         {error && <Alert severity="error" sx={{ mt: 2 }}>{error}</Alert>}
         {success && <Alert severity="success" sx={{ mt: 2 }}>{success}</Alert>}
 
-        {/* LOGIN FORM */}
         {tab === 0 && (
           <Box component="form" onSubmit={handleLogin} sx={{ mt: 2 }}>
             <CustomTextField label="Email" name="email" value={loginForm.email} onChange={handleLoginChange} type="email" />
@@ -113,7 +110,6 @@ const AuthPage = () => {
           </Box>
         )}
 
-        {/* REGISTER FORM */}
         {tab === 1 && (
           <Box component="form" onSubmit={handleRegister} sx={{ mt: 2 }}>
             <CustomTextField label="Name" name="name" value={registerForm.name} onChange={handleRegisterChange} />
