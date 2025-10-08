@@ -29,7 +29,8 @@ const StudentDashboard = () => {
     localStorage.removeItem("token"); 
     dispatch(logout()); 
     navigate("/login"); 
-
+  }
+  
   return (
     <Box sx={{ mt: 4 }}>
       <Box sx={{ display: "flex", justifyContent: "space-between", mb: 2 }}>
